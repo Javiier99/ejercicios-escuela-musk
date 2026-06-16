@@ -1,2 +1,2 @@
 # ejercicios-escuela-musk
-Todos mis ejercicios de la escuela Musk
+Aquí estarán todos mis ejercicios de la escuela Musk solucionados

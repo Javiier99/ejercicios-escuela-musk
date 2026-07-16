@@ -1,0 +1,18 @@
+{
+    "persona": [
+        {
+            "name": "Mireya",
+            "edad": 25,
+            "oficio": "Contadora",
+            "Fecha" : "20/02/1999"
+        },
+        {
+            "name": "Elena",
+            "edad": 25,
+            "oficio": "Estilista"
+        }
+    ],
+    "hola":[
+
+    ]
+}

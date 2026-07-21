@@ -152,5 +152,390 @@
 
 
 
-# ! Tema 2
+# # ! Tema 2
+
+# # * Ejercicio 1
+
+# import csv
+
+# with open("ejercicios_obligatorio_tema_5/Modulo5_Automobile_data-221102-123259.csv", "r", encoding="utf-8") as file:
+#     lineas = csv.reader(file)
+#     cabecera = next(lineas)
+#     contador_5_primeras_lineas = 0
+#     contador_5_ultimas_lineas = 0
+#     for i in lineas:
+#         print(i)
+#         contador_5_primeras_lineas += 1
+#         if(contador_5_primeras_lineas == 5):
+#             break
+#     lineas_listas = list(lineas)
+#     for i in reversed(lineas_listas):
+#         print(i)
+#         contador_5_ultimas_lineas += 1
+#         if(contador_5_ultimas_lineas == 5):
+#             break
+
+
+# # * Ejercicio 2
+
+# import csv
+
+# with open("ejercicios_obligatorio_tema_5/Modulo5_Automobile_data-221102-123259.csv", "r", encoding="utf-8") as file:
+#     archivo =  list(csv.DictReader(file))
+
+# # cabecera = next(archivo)
+
+# # 1 Dado que no hay ningún dato que sea Nan, crearé una columna nueva y lo pondré alli para posteriormente cambiarlo por otro dato 
+
+# for i in archivo:
+#     i['nueva_columna'] = None
+
+# cabecera = ['','index','company','body-style','wheel-base','length','engine-type','num-of-cylinders','horsepower','average-mileage','price','nueva_columna']
+
+# # 1 Escribimos una nueva columna
+# with open("ejercicios_obligatorio_tema_5/Modulo5_Automobile_data-221102-123259.csv", "w", newline='', encoding="utf-8") as file:
+#     escribir = csv.DictWriter(file, fieldnames=cabecera)
+#     escribir.writeheader()
+#     escribir.writerows(archivo)
+
+# # 1 Sustituimos la nueva el texto nan, por otro con un condicional
+
+# with open("ejercicios_obligatorio_tema_5/Modulo5_Automobile_data-221102-123259.csv", "r", newline='', encoding="utf-8") as file:
+#     archivo_cambiado = list(csv.DictReader(file))
+
+# for i in archivo_cambiado:
+#     if(i['company'] == 'honda'):
+#         i['nueva_columna'] = "Esto es una sustitución"
+
+# with open("ejercicios_obligatorio_tema_5/Modulo5_Automobile_data-221102-123259.csv", "w", newline='', encoding="utf-8") as file:
+#     escribir = csv.DictWriter(file, fieldnames=cabecera)
+#     escribir.writeheader()
+#     escribir.writerows(archivo_cambiado)
+
+
+
+# # * Ejercicio 3
+
+# import csv
+
+# with open("ejercicios_obligatorio_tema_5/Modulo5_Automobile_data-221102-123259.csv", "r", encoding='utf-8') as file:
+#     archivo_leido = list(csv.DictReader(file))
+
+# guardar_dato = {'Nombre Empresa' : '', 'Precio' : 0, 'Posición' : 0}
+# contador = 1 # Tenemos 1 ya que empezamos contando la cabecera
+# for i in archivo_leido:
+#     try:
+#         precio_csv = float(i['price'])
+#         if(precio_csv > guardar_dato['Precio']):
+#             guardar_dato['Nombre Empresa'] = i['company']
+#             guardar_dato['Precio'] = precio_csv
+#             guardar_dato['Precio'] = precio_csv
+#             guardar_dato['Posición'] = contador + 1 # le sumamos 1 ya que el contador está al final y no llega a contar
+            
+        
+#         contador += 1
+#     except ValueError:
+#         contador += 1
+#         continue
+    
+
+# print(f"La empresa con el coche más caro es {guardar_dato['Nombre Empresa']} y su precio es: {guardar_dato['Precio']}€ su posición es: {guardar_dato['Posición']}")
+
+
+
+# # * Ejercicio 4
+
+# import csv
+# with open("ejercicios_obligatorio_tema_5/Modulo5_Automobile_data-221102-123259.csv" , "r" , encoding='utf-8') as file:
+#     archivo = list(csv.DictReader(file))
+
+
+# for i in archivo:
+#     if(i['company'] == 'toyota'):
+#         print(i)
+
+
+# # * Ejercicio 5
+
+# import csv
+# from collections import Counter
+
+# with open("ejercicios_obligatorio_tema_5/Modulo5_Automobile_data-221102-123259.csv" , "r" , encoding='utf-8') as file:
+#     archivo = list(csv.DictReader(file))
+
+# empresas = []
+# for i in archivo:
+#     empresas.append(i['company'])
+
+# conteo_empresas = Counter(empresas)
+
+# # * Ejercicio 6
+
+# import csv
+# from collections import Counter
+
+# with open("ejercicios_obligatorio_tema_5/Modulo5_Automobile_data-221102-123259.csv" , "r" , encoding='utf-8') as file:
+#     archivo = list(csv.DictReader(file))
+
+
+# guardar_marca_precio_altos = {}
+
+# for coches in archivo:
+#     empresa = coches['company']
+#     try:
+#         precio = float(coches['price'])
+#     except:
+#         precio = 0.0
+
+    
+#     if ((empresa not in guardar_marca_precio_altos) or (precio > guardar_marca_precio_altos[empresa])):
+#         guardar_marca_precio_altos[empresa] = precio
+
+# print(guardar_marca_precio_altos)
+
+
+
+
+# * Ejercicio 7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

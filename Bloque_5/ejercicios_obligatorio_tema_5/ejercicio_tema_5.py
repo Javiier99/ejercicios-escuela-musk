@@ -296,173 +296,439 @@
 
 
 
-# * Ejercicio 7
+# # * Ejercicio 7
 
+# # 1 Comenta el ejercicio el kilometraje medio, pero no veo como tal en el csv, por lo que voy a usar consumo medio (average-mileage)
 
+# import csv
 
+# with open("ejercicios_obligatorio_tema_5/Modulo5_Automobile_data-221102-123259.csv", "r", encoding='utf-8') as file:
+#     archivo = list(csv.DictReader(file))
 
+# guardar_consumo_medio = {}
 
+# for i in archivo:
+#     empresa = i['company']
+#     try:
+#         consumo_medio = float(i['average-mileage'])
+#     except:
+#         consumo_medio = 0
+    
+#     if(empresa not in guardar_consumo_medio):
+#         guardar_consumo_medio[empresa] = [consumo_medio]
+#     else:
+#         guardar_consumo_medio[empresa].append(consumo_medio)
 
 
 
+# for marca in guardar_consumo_medio.items():
+#     calculo_media = round(sum(marca[1]) / len(marca[1]) , 2)
+#     guardar_consumo_medio[marca[0]] = calculo_media
+    
 
+# print(guardar_consumo_medio)
 
 
 
 
+# # * Ejercicio 8
 
+# import csv
 
+# with open("ejercicios_obligatorio_tema_5/Modulo5_Automobile_data-221102-123259.csv", "r", encoding='utf-8') as file:
+#     archivo = list(csv.DictReader(file))
 
 
 
+# for i in range(len(archivo)):
+#     try:
+#         if(1 < float(archivo[i]['price'])):
+#             archivo[i]['price'] = float(archivo[i]['price'])
+#     except:
+#         archivo[i]['price'] = 0
 
+# parar = False
+# while parar == False:
+#     hay_cambio = False
 
+#     for i in range(len(archivo) - 1):
+#         if(archivo[i]['price'] < archivo[i + 1]['price']):
+#             archivo[i], archivo[i + 1] = archivo[i + 1], archivo[i]
+#             hay_cambio = True
 
+#     if(hay_cambio == False):
+#         parar = True
 
 
+# # 1 (Extra) Lo escribimos en un nuevo csv para que quede guardado los cambios
+# nombre_columnas = archivo[0].keys()
 
+# with open("ejercicios_obligatorio_tema_5/archivos_creados/precio_automovil_mayor_menor.csv", "w", encoding='utf-8', newline='') as file:
+#     escribir = csv.DictWriter(file, fieldnames=nombre_columnas)
+#     escribir.writeheader()
+#     escribir.writerows(archivo)
 
 
+# # * Ejercicio 9
 
 
+# GermanCars = {
+#     'Company': ['Ford', 'Mercedes', 'BMV', 'Audi'],
+#     'Price': [23845, 171995, 135925, 71400],
+# }
+# japaneseCars = {
+#     'Company': ['Toyota', 'Honda', 'Nissan', 'Mitsubishi '],
+#     'Price': [29995, 23600, 61500, 58900],
+# }
 
+# import pandas as pd
 
+# dataframe_GermanCars = pd.DataFrame(GermanCars)
+# dataframe_japaneseCars = pd.DataFrame(japaneseCars)
 
 
+# concatenado = pd.concat([dataframe_GermanCars, dataframe_japaneseCars], ignore_index=True)
 
+# print(concatenado)
 
 
 
 
+# # * Ejercicio 10
 
 
+# Car_Price = {
+#     'Company': ['Toyota', 'Honda', 'BMV', 'Audi'],
+#     'Price': [23845, 17995, 135925, 71400],
+# }
+# car_Horsepower = {
+#     'Company': ['Toyota', 'Honda', 'BMV', 'Audi'],
+#     'horsepower': [141, 80, 182, 160],
+# }
 
+# import pandas as pd
 
+# data_frame_price = pd.DataFrame(Car_Price)
+# data_frame_horsepower = pd.DataFrame(car_Horsepower)
 
+# fusion = pd.merge(data_frame_price,data_frame_horsepower, on='Company' )
 
+# print(fusion)
 
 
 
+# ! Tema 3
 
+# # * Ejercicio 1
 
+# import numpy as np
 
 
+# arrax_4x2 = np.ones((4,2), dtype=np.uint16)
 
+# print(arrax_4x2)
+# print(arrax_4x2.ndim)
+# print(arrax_4x2.shape)
+# print(arrax_4x2.itemsize)
 
 
 
 
+# # * Ejercicio 2
 
+# import numpy as np
 
+# matriz = np.arange(100,200,10)
 
+# matriz_forma = matriz.reshape(5,2)
 
+# print(matriz_forma)
 
 
+# # * Ejercicio 3
 
 
+# import numpy as np
 
+# sampleArray = np.array([[11 ,22, 33], [44, 55, 66], [77, 88, 99]])
 
+# tercera_cloum = sampleArray[:,2]
 
+# print(tercera_cloum)
 
+# # * Ejercicio 4
 
+# import numpy as np
 
+# sampleArray = np.array([[3 ,6, 9, 12], [15 ,18, 21, 24], [27 ,30, 33, 36], [39 ,42, 45, 48], [51 ,54, 57, 60]])
 
+# columnas_impartes = sampleArray[1::2] #suponiendo que empezamos por 0
+# columnas_impartes = sampleArray[0::2] #suponiendo que empezamos por 1
 
+# print(columnas_impartes)
 
 
+# # * Ejercicio 5
 
+# import numpy as np
 
+# arrayOne = np.array([[5, 6, 9], [21, 18, 27]])
+# arrayTwo = np.array([[15, 33, 24], [4, 7, 1]])
 
 
+# matriz_tres = (arrayOne + arrayTwo)**2
 
+# print(matriz_tres)
 
 
+# # * Ejercicio 6
 
 
+# import numpy as np
 
+# matriz = np.arange(10,34,1)
 
+# matriz_forma = matriz.reshape(8,3)
 
+# matriz_dividida = np.vsplit(matriz_forma,4)
 
 
+# print(matriz_dividida)
 
 
 
 
+# # * Ejercicio 7
 
+# import numpy as np
 
+# sampleArray = np.array([[34, 43, 73], [82, 22, 12], [53, 94, 66]])
 
 
 
+# ordenado_fila = sampleArray[1,:].argsort()
+# ordenado_columna = sampleArray[: ,1].argsort()
 
+# print(sampleArray[:,ordenado_fila])
+# print(sampleArray[ordenado_columna,:])
 
 
+# # * Ejercicio 8
 
 
+# import numpy as np
 
 
+# sampleArray = np.array([[34, 43, 73], [82, 22, 12], [53, 94, 66]])
 
+# maximo = np.amax(sampleArray, axis=0)
+# minimo = np.amin(sampleArray, axis=1)
 
+# print(maximo)
+# print(minimo)
 
 
+# # * Ejercicio 9
 
+# import numpy as np
 
+# sampleArray = np.array([[34, 43, 73], [82, 22, 12], [53, 94, 66]])
+# newColumn = np.array([[10, 10, 10]])
 
+# sampleArray[:,1] = newColumn
 
+# print(sampleArray)
 
 
+# # ! Tema 4
 
+# # * Ejercicio 1
 
+# import matplotlib.pyplot as plt
+# import pandas as pd
 
+# with open("ejercicios_obligatorio_tema_5/Modulo5_company_sales_data-221102-123259.csv", "r" , encoding="utf-8") as file:
+#     archivo = pd.read_csv(file)
 
 
+# meses = archivo['month_number']
+# beneficios = archivo['total_profit']
 
 
+# plt.plot(meses, beneficios)
+# plt.title("Beneficios por mes")
+# plt.xlabel("Número del mes")
+# plt.ylabel("Beneficio total")
+# plt.xticks(meses)
+# plt.show()
 
 
+# # * Ejercicio 2
 
+# import matplotlib.pyplot as plt
+# import pandas as pd
 
+# with open("ejercicios_obligatorio_tema_5/Modulo5_company_sales_data-221102-123259.csv", "r" , encoding="utf-8") as file:
+#     archivo = pd.read_csv(file)
 
 
+# meses = archivo['month_number']
+# beneficios = archivo['total_profit']
 
 
+# plt.plot(meses, beneficios, linestyle='--', color='red', marker='o', linewidth=3, label="Profit data of last years")
+# plt.title("Beneficios por mes")
+# plt.xlabel("Número de mes")
+# plt.ylabel("Beneficio total")
+# plt.xticks(meses)
+# plt.legend(loc='lower right')
 
+# plt.show()
 
 
 
 
 
+# # * Ejercicio 3
 
 
+# import matplotlib.pyplot as plt
+# import pandas as pd
 
+# with open("ejercicios_obligatorio_tema_5/Modulo5_company_sales_data-221102-123259.csv", "r" , encoding="utf-8") as file:
+#     archivo = pd.read_csv(file)
 
 
+# facecream = archivo['facecream']
+# facewash = archivo['facewash']
+# toothpaste = archivo['toothpaste']
+# bathingsoap = archivo['bathingsoap']
+# shampoo = archivo['shampoo']
+# moisturizer = archivo['moisturizer']
+# meses = archivo['month_number']
 
+# plt.plot(meses,facecream, color='red', marker='o', linewidth=3, label="Sales data facecream")
+# plt.plot(meses,facewash, color='blue', marker='o', linewidth=3, label="Sales data facewash")
+# plt.plot(meses,toothpaste, color='green', marker='o', linewidth=3, label="Sales data toothpaste")
+# plt.plot(meses,bathingsoap, color='black', marker='o', linewidth=3, label="Sales data bathingsoap")
+# plt.plot(meses,shampoo, color='orange', marker='o', linewidth=3, label="Sales data shampoo")
+# plt.plot(meses,moisturizer, color='yellow', marker='o', linewidth=3, label="Sales data moisturizer")
+# plt.title("Venta por productos al mes")
+# plt.xlabel("Número de meses")
+# plt.ylabel("Venta total por productos")
+# plt.legend(loc='upper left')
+# plt.xticks(meses)
+# plt.show()
 
 
 
+# # * Ejercicio 4
 
+# import matplotlib.pyplot as plt
+# import pandas as pd
 
+# with open("ejercicios_obligatorio_tema_5/Modulo5_company_sales_data-221102-123259.csv", "r" , encoding="utf-8") as file:
+#     archivo = pd.read_csv(file)
 
+# meses = archivo['month_number']
+# toothpaste = archivo['toothpaste']
 
+# plt.scatter(meses, toothpaste, label='Venta de pasta de dientes')
+# plt.grid(True, linestyle='--')
+# plt.xticks(meses)
+# plt.legend(loc='upper left')
+# plt.title("Venta de pasta de diente")
+# plt.xlabel("Número de meses")
+# plt.ylabel("Venta total por pasta de diente")
+# plt.show()
 
 
 
+# # * Ejercicio 5
 
 
+# import matplotlib.pyplot as plt
+# import pandas as pd
 
+# with open("ejercicios_obligatorio_tema_5/Modulo5_company_sales_data-221102-123259.csv", "r" , encoding="utf-8") as file:
+#     archivo = pd.read_csv(file)
 
+# meses = archivo['month_number']
+# facewash = archivo['facewash']
+# facecream = archivo['facecream']
 
+# width = 0.5
 
+# plt.bar(meses - width/2,facewash, width=width, label="Venta de lavado de cara" )
+# plt.bar(meses + width/2,facecream, width=width, label="Venta de crema facial" )
 
 
 
+# plt.grid(True, linestyle='--')
+# plt.xticks(meses)
+# plt.legend(loc='upper left')
+# plt.title("Facewah y facecream ")
+# plt.xlabel("Número de meses")
+# plt.ylabel("Venta total producto")
+# plt.show()
 
 
+# # * Ejercicio 6
 
 
 
+# import matplotlib.pyplot as plt
+# import pandas as pd
 
+# with open("ejercicios_obligatorio_tema_5/Modulo5_company_sales_data-221102-123259.csv", "r" , encoding="utf-8") as file:
+#     archivo = pd.read_csv(file)
 
+# meses = archivo['month_number']
+# bathingsoap = archivo['bathingsoap']
+
+
+# plt.bar(meses,bathingsoap, label="Jabon de baño" )
+
+
+
+# plt.grid(True, linestyle='--')
+# plt.xticks(meses)
+# plt.legend(loc='upper left')
+# plt.title("Bathingsoap ")
+# plt.xlabel("Número de meses")
+# plt.ylabel("Venta total")
+# plt.savefig("Grafico_jabon_baño.png")
+# plt.show()
+
+
+
+# # * Ejercicio 7
+
+# import matplotlib.pyplot as plt
+# import pandas as pd
+
+# with open("ejercicios_obligatorio_tema_5/Modulo5_company_sales_data-221102-123259.csv", "r" , encoding="utf-8") as file:
+#     archivo = pd.read_csv(file)
+
+# meses = archivo['month_number']
+# rango_beneficio = archivo['total_profit'].tolist()
+
+# profit_range = [150000, 175000, 200000, 225000, 250000, 300000, 350000]
+
+# plt.hist(rango_beneficio, bins=profit_range, label="Profit")
+
+
+# plt.legend(loc='upper left')
+# plt.title("Profit ")
+# plt.xlabel("Profit en dolares")
+# plt.ylabel("Actual profit dolares")
+
+# plt.show()
+
+
+
+
+# * Ejercicio 8
 
 
 

@@ -1,33 +1,33 @@
 
 
-# class Estudiantes():
+class Estudiantes():
 
-#     def __init__(self, nombre):
-#         self.nombre = nombre
-
-
-
-
-# class Clases(Estudiantes):
-#     def __init__(self, nombre, clases):
-#         super().__init__(nombre)
-#         self.clases = clases
-
-#     def decir_hola(self):
-#         print(f"El alumno {self.nombre} dice Hola a la clase {self.clases}")
-
-
-# alumno1 = Estudiantes("Javier")
-# alumno2 = Clases(alumno1.nombre, 7)
+    def __init__(self, nombre):
+        self.nombre = nombre
 
 
 
-# # alumno2.decir_hola()
+
+class Clases(Estudiantes):
+    def __init__(self, nombre, clases):
+        super().__init__(nombre)
+        self.clases = clases
+
+    def decir_hola(self):
+        print(f"El alumno {self.nombre} dice Hola a la clase {self.clases}")
 
 
-# # print(Clases.mro())
+alumno1 = Estudiantes("Javier")
+alumno2 = Clases(alumno1.nombre, 7)
 
-# print(issubclass(Clases, Estudiantes ))
+
+
+# alumno2.decir_hola()
+
+
+# print(Clases.mro())
+
+print(issubclass(Clases, Estudiantes ))
 
 
 

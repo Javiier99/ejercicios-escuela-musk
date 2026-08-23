@@ -14,16 +14,6 @@
             {
                 "title": {
                     "_lang": "en",
-                    "__text": "Harry Potter"
-                },
-                "author": "J K. Rowling",
-                "year": "2005",
-                "price": "30",
-                "_category": "CHILDREN"
-            },
-            {
-                "title": {
-                    "_lang": "en",
                     "__text": "XQuery Kick Start"
                 },
                 "author": [

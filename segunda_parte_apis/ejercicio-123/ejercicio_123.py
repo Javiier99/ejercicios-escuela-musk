@@ -371,28 +371,143 @@ def open_file_read():
 
 
 
-# * 7
+# # * 7
 
-def test_more_3_hours():
-    save_dates = []
-    read_file = open_file_read()
-    for i in read_file:
-        if(i['Horas'] > 3):
-            save_dates.append(i['Titulo'])
-    return save_dates
+# def test_more_3_hours():
+#     save_dates = []
+#     read_file = open_file_read()
+#     for i in read_file:
+#         if(i['Horas'] > 3):
+#             save_dates.append(i['Titulo'])
+#     return save_dates
 
-result = test_more_3_hours()
-print(f"Los titulos que cumple son: {result}")
-
-
-
-# * 8
-# ¿Cuántas pruebas de cada tipo de formación ("Presencial" y "No Presencial") hay?
-# Implementa una función que devuelva un diccionario con el tipo de formación como clave y
-# la cantidad de pruebas para cada tipo como valor
+# result = test_more_3_hours()
+# print(f"Los titulos que cumple son: {result}")
 
 
 
+# # * 8
+
+
+# def where_there_is_test():
+#     read_file = open_file_read()
+#     count_in_person = 0
+#     count_remote = 0
+#     for i in read_file:
+#         word_remote_or_in_person = i['TipoFormacion'].replace(" ","").lower()
+#         if(word_remote_or_in_person == "nopresencial"):
+#             count_remote += 1
+#         elif(word_remote_or_in_person == "presencial"):
+#             count_in_person += 1
+#     type_trainig = {"No Presencial": count_remote, "Presencial" : count_in_person}
+#     return type_trainig
+
+# result = where_there_is_test()
+# print(result)
+
+
+# # * 9
+
+# def shortest_test():
+#     read_file = open_file_read()
+#     save_hour_short = 10
+#     save_hour_long = 0
+#     save_data_short = []
+#     save_data_long = []
+
+#     for i in read_file:
+#         if(int(i['Horas']) > save_hour_long):
+#             save_data_long = [i['Titulo'], int(i['Horas'])]
+#             save_hour_long = i['Horas']
+#         if(int(i['Horas']) < save_hour_short):
+#             save_data_short = [i['Titulo'], int(i['Horas'])]
+#             save_hour_short = i['Horas']
+
+#     result = [save_data_long, save_data_short]
+#     return result
+
+# result = shortest_test()
+# print(result)
+
+
+
+# # * 10
+
+# from datetime import datetime
+
+# def date_search(date_user):
+#     read_file = open_file_read()
+#     coincidences = []
+#     for i in read_file:
+
+#         start_date = i['InicioImparticion']
+#         start_date = datetime.strptime(start_date, "%Y-%m-%dT%H:%M:%S")
+#         date_formatting_start = start_date.strftime("%d-%m-%Y")
+
+
+#         end_date = i['FinImparticion']
+#         end_date = datetime.strptime(end_date, "%Y-%m-%dT%H:%M:%S")
+#         date_formatting_end = end_date.strftime("%d-%m-%Y")
+
+#         date_user_1 = datetime.strptime(date_user, "%d-%m-%Y")
+#         date_user_formating_end = date_user_1.strftime("%d-%m-%Y")
+
+#         if((date_formatting_start == date_user_formating_end) or (date_formatting_end == date_user_formating_end)):
+#             coincidences.append(i['Titulo'])
+#     return coincidences
+
+# date_user = str("12-01-2015")
+# result = date_search(date_user)
+# print(result)
+
+
+
+
+# # * 11
+
+# def search_name_teachers(name):
+
+#     result = []
+#     read_file = open_file_read()
+#     for i in read_file:
+#         teachers = i['Profesorado']
+#         for x in teachers:
+#             name_teachers = x['NombreCompleto'].strip().lower()
+#             if(name in name_teachers):
+#                 result.append(i['Nivel'])
+
+#     return result
+
+
+# name = str(input("Di un nombre: "))
+# name_modified = name.strip().lower()
+
+# read_file = open_file_read()
+# result = search_name_teachers(name_modified)
+# print(f"La prueba que tiene el nombre: {name} es: {result}")
+
+
+
+
+
+# # * 12
+
+
+# def search_test_all_data(title_search):
+#     read_file = open_file_read()
+#     count = 0
+#     for i in read_file:
+#         if(title_search in i['Titulo']):
+#             return read_file[count]
+#         count += 1
+#     return "No se encuentra o está mal escrito"
+
+
+
+# # title_search = str(input("Escribe el nombre del titulo: "))
+# title_search = "Inglés - Prueba de nivel - Para preparatorios del FCE/CAE/CPE/IELTS"
+# all_data = search_test_all_data(title_search)
+# print(all_data)
 
 
 
@@ -400,6 +515,11 @@ print(f"Los titulos que cumple son: {result}")
 
 
 
+
+
+
+
+# ! Ejercicio 3
 
 
 

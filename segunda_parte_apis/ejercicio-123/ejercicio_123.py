@@ -281,13 +281,13 @@
 
 
 
-# ! Ejercicio 2
+# # ! Ejercicio 2
 
-import json
-def open_file_read():
-    with open("segunda_parte_apis/ejercicio-123/ej2.json", "r", encoding="utf-8") as file:
-        file_read = json.load(file)
-    return file_read
+# import json
+# def open_file_read():
+#     with open("segunda_parte_apis/ejercicio-123/ej2.json", "r", encoding="utf-8") as file:
+#         file_read = json.load(file)
+#     return file_read
 
 # # * 1
 
@@ -522,6 +522,171 @@ def open_file_read():
 # ! Ejercicio 3
 
 
+import json
+import ijson
+
+def file_open_read():
+    with open("segunda_parte_apis/ejercicio-123/ej3.json", "rb") as file:
+        for i in ijson.items(file, "lista.provincia.item"):
+            yield i
+
+open_read_line = file_open_read()
+
+def borrar():
+    for i in open_read_line:
+        name_province = i['nombre']['__cdata']
+
+        town = i.get("localidades", {}).get("localidad", [])
+
+        if isinstance(town, list):
+            for x in town:
+                town_alone = x['__cdata']
+
+        elif isinstance(town, dict):
+            town_alone = town['__cdata']
+    
+
+
+# * 1
+
+# def all_province():
+#     for i in open_read_line:
+#         name_province = i['nombre']['__cdata']
+#         print(name_province)
+
+# result = all_province()
 
 
 
+
+# # * 2
+
+# def all_municipalities():
+#     for i in open_read_line:
+
+#         town = i.get("localidades", {}).get("localidad", [])
+
+#         if isinstance(town, list):
+#             for x in town:
+#                 town_alone = x['__cdata']
+#                 print(town_alone)
+
+#         elif isinstance(town, dict):
+#             town_alone = town['__cdata']
+#             print(town_alone)
+        
+
+# result = all_municipalities()
+
+# # * 3
+
+# def province_municipalities_count():
+#     for i in open_read_line:
+#         name_province = i['nombre']['__cdata']
+
+#         town = i.get("localidades", {}).get("localidad", [])
+#         count_town = 0
+#         for y in town:
+#             if isinstance(y, list):
+#                 for x in town:
+#                     town_alone = x['__cdata']
+#                     count_town += 1
+
+#             elif isinstance(y, dict):
+#                 town_alone = y['__cdata']
+#                 count_town += 1
+
+#         print(f"La provincia: {name_province} tiene una cantidad de {count_town} pueblos o ciudades")
+
+
+# province_municipalities_count()
+
+
+
+
+# # * 4
+
+
+# def search_province_and_its_municipalities(province):
+#     find = False
+#     save_province = {province: []}
+#     for i in open_read_line:
+#         name_province = str(i['nombre']['__cdata']).replace(" ","").upper()
+#         if(name_province == province):
+#             town = i.get("localidades", {}).get("localidad", [])
+#             for y in town:
+#                 if isinstance(y, list):
+#                     for x in town:
+#                         town_alone = x['__cdata']
+#                         save_province[province].append(town_alone)
+
+#                 elif isinstance(y, dict):
+#                     town_alone = y['__cdata']
+#                     save_province[province].append(town_alone)
+
+#             find = True
+
+#         if(find == True):
+#             break
+#     return save_province
+
+
+
+# province = str(input("Dame el nombre de la provincia: ")).replace(" ","").upper()
+
+# result = search_province_and_its_municipalities(province)
+
+# print(result)
+
+
+
+# * 5
+
+def agree_town(town_alone, town_client):
+    if(town_alone == town_client):
+        agree = True
+        return agree
+    else:
+        agree = False
+        return agree
+
+def search_province_and_its_municipalities(town_client):
+
+    for i in open_read_line:
+        name_province = str(i['nombre']['__cdata'])
+        town = i.get("localidades", {}).get("localidad", [])
+        result = False
+        if isinstance(town, list):
+            for x in town:
+                town_alone = str(x['__cdata']).replace(" ", "").upper()
+                town_alone_save = x['__cdata']
+                result = agree_town(town_alone, town_client)
+
+                if(result == True):
+                    print(f"El pueblo de {town_client} está en la provincia de: {name_province}")
+
+        elif isinstance(town, dict):
+            town_alone = str(town['__cdata']).replace(" ", "").upper()
+            town_alone_save = town['__cdata']
+            result = agree_town(town_alone, town_client)
+
+        if(result == True):
+            print(f"El pueblo de {town_alone_save} está en la provincia de: {name_province}")
+            return
+
+
+
+# town_client = "Aljaraque".upper()
+town_client = str(input("Dime el nombre de un pueblo: "))
+
+search_province_and_its_municipalities(town_client)
+
+
+
+# * 6
+
+
+
+# en una lista tenemos distintos identificadores de provincias, devolver el nombre de las
+# provincias y todos los municipios correspondientes a los identificadores que se encuentran
+# en la lista.

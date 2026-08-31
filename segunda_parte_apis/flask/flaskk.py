@@ -75,5 +75,33 @@ def update_employee(id):
     return jsonify(employee), 200
 
 
+
+@app.route('/employees/<int:id>', methods=['DELETE'])
+def delete_employee(id):
+    employee = find_employee_by_id(id)
+    if employee is None:
+        return jsonify({'error': 'Employee not found'}), 404
+
+    employees.remove(employee)
+    return jsonify({'message': f'Employee {id} deleted successfully'}), 200
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
